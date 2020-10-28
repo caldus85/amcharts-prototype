@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>amCharts 4</title>
+  
+  <script src="//www.amcharts.com/lib/4/core.js"></script>
+  <script src="//www.amcharts.com/lib/4/charts.js"></script>
+  <script src="//www.amcharts.com/lib/4/maps.js"></script>
+
+  <script>
+    am4core.ready(function() {
+        let chart = am4core.createFromConfig({
+                "type": "PieChart",
+                "data": [{
+                    "category": "Print",
+                    "value": 33
+                }, {
+                    "category": "Web Design",
+                    "value": 33
+                }, {
+                    "category": "Digital",
+                    "value": 33
+                }],
+                "series": [{
+                    "type": "PieSeries",
+                    "slices": {
+                        "template": {
+                            "type": "Slice",
+                            "innerCornerRadius": 15,
+                            "cornerRadius": 15
+                        }
+                    },
+                    "labels": {
+                        "template": {
+                            "type": "AxisLabelCircular",
+                            "text": "{category}"
+                        }
+                    },
+                    "dataFields": {
+                        "value": "value",
+                        "category": "category"
+                    },
+                    "colors": {
+                        "type": "ColorSet",
+                        "list": ["#41BFB7", "#844D9E", "#3393C9"]
+                    }
+                }],
+                "legend": {
+                    "type": "Legend",
+                    "disabled": true
+                },
+                "radius": "45%",
+                "innerRadius": "30%"
+            },
+            document.getElementById('chartdiv')
+        );
+    });
+  </script>
+</head>
+<body>
+  <div id="chartdiv" style="width:100%; height:500px;"></div>
+</body>
+</html>

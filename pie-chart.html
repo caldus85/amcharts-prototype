@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>amCharts 4</title>
+  
+  <script src="//www.amcharts.com/lib/4/core.js"></script>
+  <script src="//www.amcharts.com/lib/4/charts.js"></script>
+  <script src="//www.amcharts.com/lib/4/maps.js"></script>
+
+  <script>
+    am4core.ready(function() {
+        let chart = am4core.createFromConfig({
+                "type": "PieChart",
+                "data": [{
+                    "category": "Artisan",
+                    "value": 7
+                }, {
+                    "category": "Guardian",
+                    "value": 13
+                }, {
+                    "category": "Rational",
+                    "value": 31
+                }, {
+                    "category": "Idealist",
+                    "value": 49
+                }],
+                "series": [{
+                    "type": "PieSeries",
+                    "slices": {
+                        "template": {
+                            "type": "Slice",
+                            "stroke": "#FFFFFF",
+                            "strokeWidth": 1,
+                            "strokeOpacity": 1
+                        }
+                    },
+                    "labels": {
+                        "template": {
+                            "type": "AxisLabelCircular",
+                            "text": "{value}% {category}"
+                        }
+                    },
+                    "dataFields": {
+                        "value": "value",
+                        "category": "category"
+                    },
+                    "colors": {
+                        "type": "ColorSet",
+                        "list": ["#F49F0C", "#366F6C", "#468CB3", "#C54FA5"]
+                    }
+                }],
+                "titles": {
+                    "template": {
+                        "type": "Label"
+                    }
+                },
+                "radius": "60%"
+            },
+            document.getElementById('chartdiv')
+        );
+    });
+  </script>
+</head>
+<body>
+  <div id="chartdiv" style="width:100%; height:500px;"></div>
+</body>
+</html>
