@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>amCharts 4</title>
+  
+  <script src="http://www.amcharts.com/lib/4/core.js"></script>
+  <script src="http://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="http://www.amcharts.com/lib/4/maps.js"></script>
+
+  <script>
+    am4core.ready(function() {
+        let chart = am4core.createFromConfig({
+                "type": "XYChart",
+                "data": [{
+                    "category": "Invision",
+                    "value1": 20,
+                    "value2": 80
+                }, {
+                    "category": "Sketch",
+                    "value1": 30,
+                    "value2": 70
+                }, {
+                    "category": "InDesign",
+                    "value1": 40,
+                    "value2": 60
+                }, {
+                    "category": "Illustrator",
+                    "value1": 50,
+                    "value2": 50
+                }, {
+                    "category": "Photoshop",
+                    "value1": 75,
+                    "value2": 25
+                }],
+                "xAxes": [{
+                    "type": "ValueAxis",
+                    "strictMinMax": true,
+                    "min": 0,
+                    "max": 100,
+                    "calculateTotals": true,
+                    "renderer": {
+                        "labels": {
+                            "template": {
+                                "type": "AxisLabel",
+                                "disabled": true
+                            }
+                        },
+                        "grid": {
+                            "template": {
+                                "type": "Grid",
+                                "disabled": true
+                            }
+                        },
+                        "baseGrid": {
+                            "type": "Grid",
+                            "disabled": true
+                        },
+                        "maxLabelPosition": 0.98
+                    }
+                }],
+                "yAxes": [{
+                    "type": "CategoryAxis",
+                    "dataFields": {
+                        "category": "category"
+                    },
+                    "paddingRight": 15,
+                    "renderer": {
+                        "labels": {
+                            "template": {
+                                "type": "AxisLabel",
+                                "fill": "#555555"
+                            }
+                        },
+                        "grid": {
+                            "template": {
+                                "type": "Grid",
+                                "disabled": true,
+                                "location": 0
+                            }
+                        },
+                        "minGridDistance": 20
+                    },
+                    "fontSize": 13
+                }],
+                "series": [{
+                    "type": "ColumnSeries",
+                    "name": "Series 1",
+                    "columns": {
+                        "template": {
+                            "type": "Column",
+                            "column": {
+                                "type": "RoundedRectangle",
+                                "cornerRadiusTopLeft": 15,
+                                "cornerRadiusBottomLeft": 15
+                            },
+                            "height": "65%",
+                            "fill": {
+                                "type": "LinearGradient",
+                                "stops": [{
+                                    "color": "#477EC0"
+                                }, {
+                                    "color": "#09BDDA"
+                                }]
+                            },
+                            "strokeOpacity": 0,
+                            "tooltipText": "Series: {name}\n{categoryY}: {valueX}"
+                        }
+                    },
+                    "stacked": true,
+                    "dataFields": {
+                        "valueXShow": "totalPercent",
+                        "valueX": "value1",
+                        "categoryY": "category"
+                    },
+                    "background": {
+                        "type": "Sprite"
+                    },
+                    "sequencedInterpolation": true,
+                    "sequencedInterpolationDelay": 100
+                }, {
+                    "type": "ColumnSeries",
+                    "name": "Series 2",
+                    "columns": {
+                        "template": {
+                            "type": "Column",
+                            "column": {
+                                "type": "RoundedRectangle",
+                                "cornerRadiusTopRight": 15,
+                                "cornerRadiusBottomRight": 15
+                            },
+                            "height": "65%",
+                            "strokeOpacity": 0,
+                            "tooltipText": "Series: {name}\n{categoryY}: {valueX}"
+                        }
+                    },
+                    "stacked": true,
+                    "dataFields": {
+                        "valueXShow": "totalPercent",
+                        "valueX": "value2",
+                        "categoryY": "category"
+                    },
+                    "fill": "#F5F5F5",
+                    "stroke": "#F5F5F5",
+                    "background": {
+                        "type": "Sprite"
+                    },
+                    "sequencedInterpolation": true,
+                    "sequencedInterpolationDelay": 100
+                }],
+                "height": "50%"
+            },
+            document.getElementById('chartdiv')
+        );
+    });
+  </script>
+</head>
+<body>
+  <div id="chartdiv" style="width:100%; height:500px;"></div>
+</body>
+</html>
